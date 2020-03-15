@@ -19,3 +19,8 @@
 .usermotto {
   margin-top: 200px;
 }
+
+.mb10 {
+  margin-bottom: 10px;
+}
+

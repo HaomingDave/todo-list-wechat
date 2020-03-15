@@ -7,7 +7,19 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
+  <view class="mb10">
+    {{translatedData}}
+  </view>
   <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+    
+    <button type="default" class="mb10" bindtap='play'>播放录音</button>
+    
+    <button class="mb10" type="default" bindtap='submit'>转成文字</button>
+
+    <button class="mb10" type="default" bindtouchstart="clickDown" bind:touchend="clickUp"  touchcancel="clickUp" bindtouchmove="clickMove" class="record_btn">
+      <span wx:if="{{recording}}">{{cancel_record?'松开取消':'松开发送'}}</span>
+      <span wx:else>按下录音</span>
+    </button>
+
   </view>
 </view>
