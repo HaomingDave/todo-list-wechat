@@ -1,5 +1,22 @@
 <!--index.wxml-->
+  <view>
+    <view class="input-area">
+      <view class="weui-cells weui-cells_after-title col">
+        <view class="weui-cell weui-cell_input col-10">
+          <input class="weui-input" focus="{{inputFocus}}" placeholder="将会获取焦点"/>
+        </view>
+        <view class="col-2">
+            <image  class="{{addButtonAnimation? 'add-animation':''}}" 
+              bindtap="add"
+              bindanimationend="end"
+              src="../../images/add.svg"/>
+        </view>
+      </view>
+    </view> 
+  </view>
+
 <view class="container">
+
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
@@ -20,6 +37,13 @@
       <span wx:if="{{recording}}">{{cancel_record?'松开取消':'松开发送'}}</span>
       <span wx:else>按下录音</span>
     </button>
+
+    <view class="add">
+      <image  class="{{addButtonAnimation? 'add-animation':''}}" 
+              bindtap="add"
+              bindanimationend="end"
+              src="../../images/add.svg"/>
+    </view>
 
   </view>
 </view>

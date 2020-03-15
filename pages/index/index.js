@@ -26,7 +26,9 @@ Page({
     rate: 8000,
     filePath: '',//录音文件
     fileLen: 0,//录音长度
-    translatedData: ''
+    translatedData: '',
+    addButtonAnimation: '',
+    inputFocus: false
   },
   //事件处理函数
   bindViewTap: function() {
@@ -214,6 +216,20 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+
+  add() {
+    this.setData({
+      addButtonAnimation: true,
+      inputFocus: true
+    })
+  },
+
+  end() {
+    this.setData({
+      addButtonAnimation: false,
+      
     })
   }
 

@@ -1,4 +1,6 @@
 /**index.wxss**/
+@import "../../plugin/css/grid.wxss";
+
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -24,3 +26,32 @@
   margin-bottom: 10px;
 }
 
+.add image {
+  width: 60px;
+}
+
+.add-animation {
+  animation: larger 0.5s;
+}
+
+.add {
+  display:flex;     
+  justify-content: center;   
+}
+
+@keyframes larger{
+  0%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1.2);
+  }
+  100%{
+    transform: scale(1);
+  } 
+}
+
+.input-area image {
+  width: 30px;
+  height: 30px;
+}
