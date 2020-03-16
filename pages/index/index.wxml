@@ -1,19 +1,19 @@
 <!--index.wxml-->
-  <view>
-    <view class="input-area">
-      <view class="weui-cells weui-cells_after-title col">
-        <view class="weui-cell weui-cell_input col-10">
-          <input class="weui-input" focus="{{inputFocus}}" placeholder="将会获取焦点"/>
-        </view>
+<view>
+  <view class="input-area {{inputShow? 'input-show':''}}">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input col">
+        <input class="weui-input col-10" focus="{{inputFocus}}" placeholder="将会获取焦点"/>
         <view class="col-2">
-            <image  class="{{addButtonAnimation? 'add-animation':''}}" 
+            <image  class="microphone" 
               bindtap="add"
-              bindanimationend="end"
-              src="../../images/add.svg"/>
+              src="../../images/micophone.svg"/>
         </view>
       </view>
-    </view> 
-  </view>
+
+    </view>
+  </view> 
+</view>
 
 <view class="container">
 
@@ -29,21 +29,25 @@
   </view>
   <view class="usermotto">
     
-    <button type="default" class="mb10" bindtap='play'>播放录音</button>
+    <!-- <button type="default" class="mb10" bindtap='play'>播放录音</button>
     
     <button class="mb10" type="default" bindtap='submit'>转成文字</button>
 
     <button class="mb10" type="default" bindtouchstart="clickDown" bind:touchend="clickUp"  touchcancel="clickUp" bindtouchmove="clickMove" class="record_btn">
       <span wx:if="{{recording}}">{{cancel_record?'松开取消':'松开发送'}}</span>
       <span wx:else>按下录音</span>
-    </button>
+    </button> -->
 
-    <view class="add">
-      <image  class="{{addButtonAnimation? 'add-animation':''}}" 
-              bindtap="add"
-              bindanimationend="end"
-              src="../../images/add.svg"/>
-    </view>
+
+  </view>
+  <view class="mask {{inputShow? 'input-show':''}}" bindtap="disableInput">
 
   </view>
 </view>
+<view class="add">
+  <image  class="{{addButtonAnimation? 'add-animation':''}}" 
+          bindtap="add"
+          bindanimationend="end"
+          src="../../images/add.svg"/>
+</view>
+

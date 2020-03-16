@@ -222,7 +222,8 @@ Page({
   add() {
     this.setData({
       addButtonAnimation: true,
-      inputFocus: true
+      inputFocus: true,
+      inputShow: true
     })
   },
 
@@ -230,6 +231,13 @@ Page({
     this.setData({
       addButtonAnimation: false,
       
+    })
+  },
+
+  disableInput() {
+    this.setData({
+      inputFocus: false,
+      inputShow: false
     })
   }
 
