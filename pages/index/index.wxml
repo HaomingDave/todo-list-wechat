@@ -22,7 +22,10 @@
 <view class="task-wrapper">
   <view class="task-list">
     <view wx:for="{{taskList}}" class="task">
-     {{index + 1}} . {{item}}
+      <label class="checkbox" class="task-label">
+        <checkbox value="{{item}}" class="task-checkbox"/>
+        <text>{{item}}</text>
+      </label>
     </view>
   </view>
   <view class="mask {{inputAreaShow? 'input-show':''}}" bindtap="disableInput">
