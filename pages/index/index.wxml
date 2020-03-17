@@ -12,16 +12,17 @@
         </view> -->
       </view>
 
+
     </view>
 
 
   </view>
 </view>
 
-<view class="container">
+<view class="task-wrapper">
   <view class="task-list">
     <view wx:for="{{taskList}}" class="task">
-      {{item}}
+     {{index + 1}} . {{item}}
     </view>
   </view>
   <view class="mask {{inputAreaShow? 'input-show':''}}" bindtap="disableInput">

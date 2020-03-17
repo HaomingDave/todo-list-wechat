@@ -33,7 +33,7 @@ Page({
     inputAreaShow: false,
     hold: false,
     holdStartTime: '',
-    taskList: [],
+    taskList: ['今天的第一个任务（占位）'],
     audioRecording: false
   },
   //事件处理函数
