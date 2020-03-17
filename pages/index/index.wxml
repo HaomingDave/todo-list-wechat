@@ -1,53 +1,44 @@
 <!--index.wxml-->
+<view class="wrapper">
 <view>
-  <view class="input-area {{inputShow? 'input-show':''}}">
+  <view class="input-area {{inputAreaShow? 'input-area-show':''}}">
     <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell weui-cell_input col">
-        <input class="weui-input col-10" focus="{{inputFocus}}" placeholder="将会获取焦点"/>
-        <view class="col-2">
+      <view class="weui-cell weui-cell_input input-wrapper col {{inputAreaShow? 'input-show':''}}">
+        <input class="weui-input col-10"  focus="{{inputFocus}}" placeholder="请添加事项..." confirm-hold="true" fixed="true"/>
+        <!-- <view class="col-2">
             <image  class="microphone" 
-              bindtap="add"
+              bindtap=""
               src="../../images/micophone.svg"/>
-        </view>
+        </view> -->
       </view>
 
     </view>
-  </view> 
+
+
+  </view>
 </view>
 
 <view class="container">
-
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <view class="task-list">
+    <view wx:for="{{taskList}}" class="task">
+      {{item}}
+    </view>
   </view>
-  <view class="mb10">
-    {{translatedData}}
-  </view>
-  <view class="usermotto">
-    
-    <!-- <button type="default" class="mb10" bindtap='play'>播放录音</button>
-    
-    <button class="mb10" type="default" bindtap='submit'>转成文字</button>
-
-    <button class="mb10" type="default" bindtouchstart="clickDown" bind:touchend="clickUp"  touchcancel="clickUp" bindtouchmove="clickMove" class="record_btn">
-      <span wx:if="{{recording}}">{{cancel_record?'松开取消':'松开发送'}}</span>
-      <span wx:else>按下录音</span>
-    </button> -->
-
+  <view class="mask {{inputAreaShow? 'input-show':''}}" bindtap="disableInput">
 
   </view>
-  <view class="mask {{inputShow? 'input-show':''}}" bindtap="disableInput">
-
+  <view class="wave-mask {{audioRecording? 'show':''}}">
+    <image src="../../images/animat-audio.gif" />
   </view>
 </view>
 <view class="add">
-  <image  class="{{addButtonAnimation? 'add-animation':''}}" 
-          bindtap="add"
+  <image  class="{{addButtonAnimation? 'add-animation':''}}{{hold? 'enlarge':''}}" 
+          bindtouchstart="clickDown1" 
+          bind:touchend="clickUp1"  
+          touchcancel="clickUp1" 
+          bindtouchmove="clickMove1"
           bindanimationend="end"
           src="../../images/add.svg"/>
 </view>
 
+</view>

@@ -1,6 +1,9 @@
 /**index.wxss**/
 @import "../../plugin/css/grid.wxss";
 
+.wrapper {
+  position: relative;
+}
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -20,6 +23,8 @@
 
 .usermotto {
   margin-top: 200px;
+  height: 800px;
+  width: 100%;
 }
 
 .mb10 {
@@ -28,15 +33,23 @@
 
 .add image {
   width: 60px;
+  height: 60px;
+  display: inline-block;
+}
+.enlarge {
+  transform: scale(1.2);
 }
 
 .add-animation {
   animation: larger 0.5s;
 }
 
-.add {
-  display:flex;     
-  justify-content: center;   
+.add { 
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  padding: 100rpx 0;
 }
 
 @keyframes larger{
@@ -52,13 +65,21 @@
 }
 
 .input-area {
-  display: none;
+  height: 0;
+  transition: height 0.2s;
 }
 .input-area image {
   width: 30px;
   height: 30px;
 }
+.input-area .input-wrapper {
+  display: none;
+  padding: 20px;
+}
 
+.input-area-show {
+  height: 60px;
+}
 .input-show {
   display: block!important;
 }
@@ -71,9 +92,44 @@
   position: absolute;
   display: none;
 }
+.wave-mask {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  position: absolute;
+  display: none;
+}
 .container {
   position: relative;
+  width: 100%;
+  height: 500px;
 }
 .microphone {
   width: 20px!important;
+}
+.speak-mask {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  position: absolute;
+  display: none;
+  z-index: 99;
+}
+.show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.speak-icon {
+  width: 50px;
+}
+.task-list {
+  width: initial;
+  margin: 20px;
+  padding: 0 30px;
+}
+.task {
+  margin-bottom: 100px;
 }

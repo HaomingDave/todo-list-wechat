@@ -28,7 +28,13 @@ Page({
     fileLen: 0,//录音长度
     translatedData: '',
     addButtonAnimation: '',
-    inputFocus: false
+    inputFocus: false,
+    enableSpeak: false,
+    inputAreaShow: false,
+    hold: false,
+    holdStartTime: '',
+    taskList: [],
+    audioRecording: false
   },
   //事件处理函数
   bindViewTap: function() {
@@ -85,6 +91,7 @@ Page({
             fileBase64: e.data
           })
           console.log(e, 'readfile ok');
+          that.submit();
         },
         complete() {
           wx.hideLoading();
@@ -111,6 +118,45 @@ Page({
       format: 'mp3',//音频格式
       // frameSize: 2000,//指定大小 kb
     })
+  },
+  clickDown1(e) {
+    this.setData({
+      hold: true,
+      holdStartTime: e.timeStamp,
+    })
+
+    setTimeout(() => {
+      if (this.data.hold) {
+        that.setData({
+          recording: true,
+          start_y: e.touches[0].clientY,
+          cancel_record: false,
+          audioRecording: true
+        })
+        //开始录音
+        recorder.start({
+          duration: 60000,//最大时长
+          sampleRate: that.data.rate,//采样率
+          numberOfChannels: 1,//录音通道数
+          encodeBitRate: 24000,//编码码率，有效值见下表格
+          format: 'mp3',//音频格式
+          // frameSize: 2000,//指定大小 kb
+        })
+        
+      }
+    }, 400);
+    
+  },
+  clickUp1(e) {
+    this.setData({
+      hold: false,
+      audioRecording: false
+    })
+    if (e.timeStamp - this.data.holdStartTime < 350) {
+      this.add()     
+    } else {
+      recorder.stop();
+    }
   },
 
   //手指松开
@@ -204,27 +250,32 @@ Page({
         that.setData({
           translatedData: e.data.Response.Result
         })
+        var taskList = that.data.taskList
+        taskList.push(e.data.Response.Result)
+        that.setData({
+          taskList: taskList
+
+
+        })
+
+        console.log(that.data.taskList)
       },
       complete() { wx.hideLoading(); }
     })
   },
 
 
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
-
   add() {
     this.setData({
       addButtonAnimation: true,
-      inputFocus: true,
-      inputShow: true
+      // inputFocus: true,
+      inputAreaShow: true
     })
+    setTimeout(() => {
+      this.setData({
+        inputFocus: true
+      })
+    },100)
   },
 
   end() {
@@ -237,7 +288,14 @@ Page({
   disableInput() {
     this.setData({
       inputFocus: false,
-      inputShow: false
+      inputShow: false,
+      inputAreaShow:false
+    })
+  },
+
+  toggleSpeak() {
+    this.setData({
+      enableSpeak: true
     })
   }
 
