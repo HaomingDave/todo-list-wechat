@@ -1,0 +1,11 @@
+<!-- 组件模板 -->
+<view>
+  <view class="task-list">
+    <view wx:for="{{taskList}}" class="task">
+      <label class="checkbox" class="task-label">
+        <checkbox value="{{item}}" class="task-checkbox"/>
+        <text>{{item}}</text>
+      </label>
+    </view>
+  </view>
+</view>

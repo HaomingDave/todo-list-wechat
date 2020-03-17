@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "task-list": "/components/taskList/task-list"
+  }
 }
