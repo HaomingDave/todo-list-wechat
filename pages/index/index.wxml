@@ -4,7 +4,7 @@
   <view class="input-area {{inputAreaShow? 'input-area-show':''}}">
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input input-wrapper col {{inputAreaShow? 'input-show':''}}">
-        <input class="weui-input col-10" 
+        <input class="weui-input col-9 main-input" 
                placeholder="请添加事项..." 
                confirm-hold="true" fixed="true"
                focus="{{inputFocus}}"
@@ -76,11 +76,16 @@
             </view>
         </view>
         
-        <!-- <view class="col-2">
+        <view class="col-2 input-operate">
             <image  class="microphone" 
+              wx:if="{{!taskContent}}"
               bindtap=""
               src="../../images/micophone.svg"/>
-        </view> -->
+            <image  class="microphone" 
+              wx:if="{{taskContent}}"
+              bindtap=""
+              src="../../images/cancel.svg"/>
+        </view>
       </view>
 
 
@@ -95,9 +100,6 @@
   <view class="mask {{inputAreaShow? 'input-show':''}}" bindtap="disableInput" bindtouchmove="disableInput">
 
   </view>
-  <view class="wave-mask {{audioRecording? 'show':''}}">
-    <image src="../../images/animat-audio.gif" />
-  </view>
 </view>
 <view class="add">
   <image  class="{{addButtonAnimation? 'add-animation':''}}{{hold? 'enlarge':''}}" 
@@ -107,6 +109,10 @@
           bindtouchmove="clickMove1"
           bindanimationend="end"
           src="../../images/add.svg"/>
+</view>
+<view class="wave-mask {{audioRecording? 'show':''}}"
+      style="width:{{width}}px;height:{{height}}px">
+  <image src="../../images/animat-audio.gif" />
 </view>
 
 

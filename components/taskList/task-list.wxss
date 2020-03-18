@@ -1,6 +1,5 @@
 .task-list {
   margin: 20px;
-  padding: 0 15px;
 }
 .task {
   margin-bottom: 40px;
@@ -34,4 +33,5 @@
   display: flex;
   justify-content: left;
   align-items: center;
+  position: absolute;
 }

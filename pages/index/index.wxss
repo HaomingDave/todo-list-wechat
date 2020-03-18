@@ -4,27 +4,12 @@
 .wrapper {
   position: relative;
 }
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
-  height: 800px;
-  width: 100%;
+.input-operate {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 20px;
 }
 
 .mb10 {
@@ -76,6 +61,10 @@
 .input-area .input-wrapper {
   display: none;
   padding: 20px;
+  padding-left: 56px;
+}
+.main-input {
+  height: 30px;
 }
 
 .input-area-show {
@@ -129,7 +118,7 @@
 .show {
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 }
 .speak-icon {
   width: 50px;
@@ -147,6 +136,20 @@
 }
 .task-checkbox {
   margin-right: 10px;
+}
+input-tool-box {
+  height: 40px;
+  width: 100%;
+  margin-left: 10px;
+  background-color: #fff;
+  position: fixed;
+  bottom: -40px;
+  transition: bottom 0.5s;
+  display: none;
+  z-index: 99;
+  line-height: 2;
+  left: 0;
+  text-align: center;
 }
 .input-tool-tag {
   height: 40px;
