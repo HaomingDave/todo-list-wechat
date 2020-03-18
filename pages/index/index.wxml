@@ -10,6 +10,7 @@
                focus="{{inputFocus}}"
                bindfocus="onbindfocus"
                bindinput="onbindinput"
+               bindconfirm="onbindconfirm"
                adjust-position = 'true'
                value="{{taskContent}}"
                 >
@@ -42,8 +43,12 @@
                      class="input-tag"
                      focus="{{tagInputActive}}"
                      value="{{tagValue}}"
+                     confirm-hold
+                     maxlength = "20"
                      bindinput="onbindtaginput"
-                     bindfocus="onbindtaginputfocus"/>
+                     bindfocus="onbindtaginputfocus"
+                     bindconfirm="onbindtaginputconfirm"
+                     />
               <view class="tag-select-modal {{tagInputActive? 'show-2':''}}"
                     bindtouchstart="hideToolBar">
                 <view class="modal-content">

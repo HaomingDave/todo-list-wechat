@@ -367,6 +367,15 @@ Page({
     this.setData({
       tagInputActive: true
     })
+  },
+  onbindconfirm() {
+    this.disableInput()
+  },
+  onbindtaginputconfirm() {
+    this.setData({
+      inputFocus: true,
+      tagInputActive: false
+    })
   }
 
 })

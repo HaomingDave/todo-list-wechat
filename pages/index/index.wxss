@@ -150,23 +150,17 @@
 }
 .input-tool-tag {
   height: 40px;
-  width: 20px;
-  background-color: brown;
-  position: fixed;
-  bottom: -40px;
-  transition: bottom 0.5s;
-  display: none;
-  z-index: 100;
-}
-.input-tool-tag {
-  height: 40px;
-  width: 100%;
+  width: 40px;
+  margin-left: 10px;
   background-color: #fff;
   position: fixed;
   bottom: -40px;
   transition: bottom 0.5s;
   display: none;
   z-index: 100;
+  line-height: 2;
+  left: 0;
+  text-align: center;
 }
 
 .show-2 {
@@ -182,6 +176,7 @@
   background-color: #fff;
   position: fixed;
   bottom: -40px;
+  left: 0;
   transition: bottom 0.5s;
   display: none;
   z-index: 101;
