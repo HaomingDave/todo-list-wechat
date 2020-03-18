@@ -4,7 +4,62 @@
   <view class="input-area {{inputAreaShow? 'input-area-show':''}}">
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input input-wrapper col {{inputAreaShow? 'input-show':''}}">
-        <input class="weui-input col-10"  focus="{{inputFocus}}" placeholder="请添加事项..." confirm-hold="true" fixed="true"/>
+        <input class="weui-input col-10" 
+               placeholder="请添加事项..." 
+               confirm-hold="true" fixed="true"
+               focus="{{inputFocus}}"
+               bindfocus="onbindfocus"
+               bindinput="onbindinput"
+               adjust-position = 'true'
+               value="{{taskContent}}"
+                >
+          <view class="input-tool-box {{inputAreaShow? 'show-2':''}}" 
+                style="bottom:{{miniKeyboardHeight}}px">
+                
+          </view>
+          <view class="input-tool-tag {{inputToolBarShow? 'show-2':''}}" 
+                style="bottom:{{miniKeyboardHeight}}px"
+                bindtap="showSubInfo">
+                #
+          </view>
+          <view class="input-tool-today {{inputAreaShow? 'show-2':''}}" 
+                style="bottom:{{miniKeyboardHeight}}px">
+                today
+          </view>
+          <view class="input-tool-today {{inputAreaShow? 'show-2':''}}" 
+                style="bottom:{{miniKeyboardHeight}}px">
+                today
+          </view>
+          <view class="tool-mask {{inputAreaShow? 'show-2':''}} {{inputNotEmpty? 'disappear':''}}"
+                style="bottom:{{miniKeyboardHeight}}px"></view>
+        </input>
+        <view class="sub-info col {{subInfoShow? 'sub-info-show':''}}">
+            <view class="tag-icon">
+              #
+            </view>
+            <view>
+              <input type="" placeholder="" 
+                     class="input-tag"
+                     focus="{{tagInputActive}}"
+                     value="{{tagValue}}"
+                     bindfocus=""/>
+              <view class="tag-select-modal {{tagInputActive? 'show-2':''}}"
+                    bindtouchstart="hideToolBar">
+                <view class="modal-content">
+                  <view class="modal-title">
+                    输入新标签，或选择下列分类标签
+                  </view>
+                  <view class="modal-list">
+                    <view wx:for="{{preSetTagList}}" data-item="{{item}}" class="preset-tag" bindtap="selectTag">
+                      # {{item}}
+                    </view>
+                  </view>
+                  
+                </view>
+              </view>
+            </view>
+        </view>
+        
         <!-- <view class="col-2">
             <image  class="microphone" 
               bindtap=""
@@ -21,7 +76,7 @@
 
 <view class="task-wrapper">
   <task-list task-list="{{taskList}}"/>
-  <view class="mask {{inputAreaShow? 'input-show':''}}" bindtap="disableInput">
+  <view class="mask {{inputAreaShow? 'input-show':''}}" bindtap="disableInput" bindtouchmove="disableInput">
 
   </view>
   <view class="wave-mask {{audioRecording? 'show':''}}">
@@ -38,4 +93,6 @@
           src="../../images/add.svg"/>
 </view>
 
+
 </view>
+

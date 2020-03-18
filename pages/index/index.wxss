@@ -86,6 +86,7 @@
 }
 .task-wrapper {
   min-height: 400px;
+  position: relative;
 }
 .mask {
   width: 100%;
@@ -146,4 +147,87 @@
 }
 .task-checkbox {
   margin-right: 10px;
+}
+.input-tool-tag {
+  height: 40px;
+  width: 20px;
+  background-color: brown;
+  position: fixed;
+  bottom: -40px;
+  transition: bottom 0.5s;
+  display: none;
+  z-index: 100;
+}
+.input-tool-tag {
+  height: 40px;
+  width: 100%;
+  background-color: #fff;
+  position: fixed;
+  bottom: -40px;
+  transition: bottom 0.5s;
+  display: none;
+  z-index: 100;
+}
+
+.show-2 {
+  display: block!important;
+}
+.disappear {
+  display: none!important;
+}
+
+.tool-mask {
+  height: 40px;
+  width: 100%;
+  background-color: #fff;
+  position: fixed;
+  bottom: -40px;
+  transition: bottom 0.5s;
+  display: none;
+  z-index: 101;
+  opacity: 0.5;
+}
+
+.sub-info {
+  display: none;
+  color: #969696;
+  font-size: 14px;
+}
+.sub-info-show {
+  display: flex;
+  justify-content: left;
+}
+.input-tag {
+  width: 100%;
+  min-width: 20px;
+}
+.tag-select-modal {
+  background-color: #fff;
+  position: relative;
+  z-index: 120;
+  box-shadow: #666 0px 0px 4px; 
+  max-height: 150px;
+  overflow: scroll;
+  display: none;
+  
+}
+.modal-content {
+  width: 160px;
+  margin-top: 5px;
+  margin-left: 15px;
+}
+.modal-title {
+  font-size: 10px;
+  padding-bottom: 5px;
+  padding-right: 2px;
+  border-bottom: 1px solid #e6e6e6;
+  color: #e6e6e6;
+  margin-bottom: 10px;
+}
+.tag-icon {
+  line-height: 1.8;
+}
+.preset-tag {
+  padding-bottom: 10px;
+  font-size: 16px;
 }

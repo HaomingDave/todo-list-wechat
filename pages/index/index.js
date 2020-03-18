@@ -34,7 +34,15 @@ Page({
     hold: false,
     holdStartTime: '',
     taskList: ['今天的第一个任务（占位）'],
-    audioRecording: false
+    audioRecording: false,
+    miniKeyboardHeight: '',
+    inputNotEmpty: false,
+    tagInputActive: false,
+    subInfoShow: false,
+    taskContent: '',
+    inputToolBarShow: false,
+    preSetTagList: ["旅行", "读书", "计划", "学习", "项目"],
+    tagValue: ''
   },
   //事件处理函数
   bindViewTap: function() {
@@ -268,8 +276,8 @@ Page({
   add() {
     this.setData({
       addButtonAnimation: true,
-      // inputFocus: true,
-      inputAreaShow: true
+      inputAreaShow: true,
+      inputToolBarShow: true
     })
     setTimeout(() => {
       this.setData({
@@ -289,7 +297,12 @@ Page({
     this.setData({
       inputFocus: false,
       inputShow: false,
-      inputAreaShow:false
+      inputAreaShow:false,
+      miniKeyboardHeight: -30,
+      taskContent: '',
+      subInfoShow: false,
+      inputNotEmpty: false,
+      inputToolBarShow: false
     })
   },
 
@@ -297,6 +310,42 @@ Page({
     this.setData({
       enableSpeak: true
     })
+  },
+
+  onbindfocus(e) {
+    this.setData({
+      miniKeyboardHeight: e.detail.height
+    })
+  },
+  onbindinput(e) {
+    if (e.detail.value.trim()) {
+      this.setData({
+        inputNotEmpty: true
+      })
+    } else {
+      this.setData({
+        inputNotEmpty: false
+      })
+    }
+  },
+  showSubInfo() {
+    this.setData({
+      subInfoShow: true,
+      tagInputActive: true
+    })
+  },
+  hideToolBar() {
+    this.setData({
+      inputToolBarShow: false,
+      miniKeyboardHeight: -30
+    })
+  },
+  selectTag(e) {
+    this.setData({
+      tagValue: e.currentTarget.dataset.item,
+      tagInputActive: false
+    })
+
   }
 
 })
