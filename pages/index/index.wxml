@@ -42,7 +42,8 @@
                      class="input-tag"
                      focus="{{tagInputActive}}"
                      value="{{tagValue}}"
-                     bindfocus=""/>
+                     bindinput="onbindtaginput"
+                     bindfocus="onbindtaginputfocus"/>
               <view class="tag-select-modal {{tagInputActive? 'show-2':''}}"
                     bindtouchstart="hideToolBar">
                 <view class="modal-content">

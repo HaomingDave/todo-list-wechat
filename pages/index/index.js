@@ -299,7 +299,7 @@ Page({
 
   disableInput() {
     if (that.data.taskContent.trim()) {
-      that.addTaskToPage(that.data.taskContent)
+      that.addTaskToPage(that.data.taskContent, that.data.tagValue)
     }
     this.setData({
       inputFocus: false,
@@ -309,7 +309,8 @@ Page({
       taskContent: '',
       subInfoShow: false,
       inputNotEmpty: false,
-      inputToolBarShow: false
+      inputToolBarShow: false,
+      tagValue:''
     })
   },
 
@@ -338,6 +339,11 @@ Page({
       })
     }
   },
+  onbindtaginput(e) {
+    this.setData({
+      tagValue: e.detail.value.trim()
+    })
+  },
   showSubInfo() {
     this.setData({
       subInfoShow: true,
@@ -356,6 +362,11 @@ Page({
       tagInputActive: false
     })
 
+  },
+  onbindtaginputfocus() {
+    this.setData({
+      tagInputActive: true
+    })
   }
 
 })

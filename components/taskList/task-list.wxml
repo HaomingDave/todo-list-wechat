@@ -6,8 +6,8 @@
         <checkbox value="{{item}}" class="task-checkbox"/>
         <view>
           <text>{{item.content}}</text>
-          <view class="task-tag">
-            #
+          <view class="task-tag" wx:if="{{item.tag}}">
+            #{{item.tag}}
           </view>
         </view>
       </label>
