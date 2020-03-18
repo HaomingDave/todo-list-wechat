@@ -359,7 +359,9 @@ Page({
   selectTag(e) {
     this.setData({
       tagValue: e.currentTarget.dataset.item,
-      tagInputActive: false
+      tagInputActive: false,
+      inputFocus: true
+
     })
 
   },
