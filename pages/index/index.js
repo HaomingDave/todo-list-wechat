@@ -33,7 +33,7 @@ Page({
     inputAreaShow: false,
     hold: false,
     holdStartTime: '',
-    taskList: ['今天的第一个任务（占位）'],
+    taskList: [],
     audioRecording: false,
     miniKeyboardHeight: '',
     inputNotEmpty: false,
@@ -258,14 +258,7 @@ Page({
         that.setData({
           translatedData: e.data.Response.Result
         })
-        var taskList = that.data.taskList
-        taskList.push(e.data.Response.Result)
-        that.setData({
-          taskList: taskList
-
-
-        })
-
+        that.addTaskToPage(e.data.Response.Result)
         console.log(that.data.taskList)
       },
       complete() { wx.hideLoading(); }
@@ -292,8 +285,22 @@ Page({
       
     })
   },
+  addTaskToPage(content, tag) {
+    var task = {
+      content: content,
+      tag: tag
+    }
+    var taskList = that.data.taskList
+    taskList.unshift(task)
+    that.setData({
+      taskList: taskList
+    })
+  },
 
   disableInput() {
+    if (that.data.taskContent.trim()) {
+      that.addTaskToPage(that.data.taskContent)
+    }
     this.setData({
       inputFocus: false,
       inputShow: false,
@@ -318,6 +325,9 @@ Page({
     })
   },
   onbindinput(e) {
+    this.setData({
+      taskContent: e.detail.value
+    })
     if (e.detail.value.trim()) {
       this.setData({
         inputNotEmpty: true

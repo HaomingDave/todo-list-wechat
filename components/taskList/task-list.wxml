@@ -2,9 +2,14 @@
 <view>
   <view class="task-list">
     <view wx:for="{{taskList}}" class="task">
-      <label class="checkbox" class="task-label">
+      <label class="checkbox task-label">
         <checkbox value="{{item}}" class="task-checkbox"/>
-        <text>{{item}}</text>
+        <view>
+          <text>{{item.content}}</text>
+          <view class="task-tag">
+            #
+          </view>
+        </view>
       </label>
     </view>
   </view>

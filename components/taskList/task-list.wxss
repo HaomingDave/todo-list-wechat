@@ -12,3 +12,8 @@
 .task-checkbox {
   margin-right: 10px;
 }
+.task-tag {
+  position: absolute;
+  color: #969696;
+  font-size: 14px;
+}
