@@ -6,8 +6,14 @@
         <checkbox value="{{item}}" class="task-checkbox"/>
         <view>
           <text>{{item.content}}</text>
-          <view class="task-tag" wx:if="{{item.tag}}">
-            #{{item.tag}}
+          <view class="sub-info-wrapper">
+            <view class="tag-today-22" wx:if="{{item.date}}">
+              <image src="../../images/clock.svg" />
+              {{item.date}} {{item.time}}
+            </view>
+            <view class="task-tag" wx:if="{{item.tag}}">
+              #{{item.tag}}
+            </view>
           </view>
         </view>
       </label>

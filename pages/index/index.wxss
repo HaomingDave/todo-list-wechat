@@ -162,6 +162,30 @@
   left: 0;
   text-align: center;
 }
+.input-tool-today {
+  height: 40px;
+  background-color: #fff;
+  position: fixed;
+  bottom: -40px;
+  transition: bottom 0.5s;
+  display: none;
+  z-index: 100;
+  line-height: 2;
+  right: 40%;
+  text-align: center;
+}
+.input-tool-tmr {
+  height: 40px;
+  background-color: #fff;
+  position: fixed;
+  bottom: -40px;
+  transition: bottom 0.5s;
+  display: none;
+  z-index: 100;
+  line-height: 2;
+  right: 20%;
+  text-align: center;
+}
 
 .show-2 {
   display: block!important;
@@ -191,6 +215,7 @@
 .sub-info-show {
   display: flex;
   justify-content: left;
+  align-items: center;
 }
 .input-tag {
   width: 100%;
@@ -198,7 +223,7 @@
 }
 .tag-select-modal {
   background-color: #fff;
-  position: relative;
+  position: absolute;
   z-index: 120;
   box-shadow: #666 0px 0px 4px; 
   max-height: 150px;
@@ -225,4 +250,14 @@
 .preset-tag {
   padding-bottom: 10px;
   font-size: 16px;
+}
+.tag-today-22 {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-right: 10px;
+}
+.tag-today-22 image {
+  width: 14px;
+  margin-right: 5px;
 }

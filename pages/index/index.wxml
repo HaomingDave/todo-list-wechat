@@ -23,32 +23,42 @@
                 bindtap="showSubInfo">
                 #
           </view>
-          <view class="input-tool-today {{inputAreaShow? 'show-2':''}}" 
-                style="bottom:{{miniKeyboardHeight}}px">
+          <view class="input-tool-today {{inputToolBarShow? 'show-2':''}}" 
+                style="bottom:{{miniKeyboardHeight}}px"
+                bindtap="selectToday">
                 today
           </view>
-          <view class="input-tool-today {{inputAreaShow? 'show-2':''}}" 
-                style="bottom:{{miniKeyboardHeight}}px">
-                today
+          <view class="input-tool-tmr {{inputToolBarShow? 'show-2':''}}" 
+                style="bottom:{{miniKeyboardHeight}}px"
+                bindtap="selectTmr">
+                tmr
           </view>
           <view class="tool-mask {{inputAreaShow? 'show-2':''}} {{inputNotEmpty? 'disappear':''}}"
                 style="bottom:{{miniKeyboardHeight}}px"></view>
         </input>
         <view class="sub-info col {{subInfoShow? 'sub-info-show':''}}">
-            <view class="tag-icon">
+            <view class="tag-today-22" wx:if="{{todayShortcutEnable}}">
+              <image src="../../images/clock.svg" />
+              今天 22:00
+            </view>
+            <view class="tag-today-22" wx:if="{{tmrShortcutEnable}}">
+              <image src="../../images/clock.svg" />
+              明天 08:00
+            </view>
+            <view class="tag-icon" wx:if="{{tagShow}}">
               #
             </view>
-            <view>
+            <view wx:if="{{tagShow}}">
               <input type="" placeholder="" 
-                     class="input-tag"
-                     focus="{{tagInputActive}}"
-                     value="{{tagValue}}"
-                     confirm-hold
-                     maxlength = "20"
-                     bindinput="onbindtaginput"
-                     bindfocus="onbindtaginputfocus"
-                     bindconfirm="onbindtaginputconfirm"
-                     />
+                  class="input-tag"
+                  focus="{{tagInputActive}}"
+                  value="{{tagValue}}"
+                  confirm-hold
+                  maxlength = "20"
+                  bindinput="onbindtaginput"
+                  bindfocus="onbindtaginputfocus"
+                  bindconfirm="onbindtaginputconfirm"
+                  />
               <view class="tag-select-modal {{tagInputActive? 'show-2':''}}"
                     bindtouchstart="hideToolBar">
                 <view class="modal-content">

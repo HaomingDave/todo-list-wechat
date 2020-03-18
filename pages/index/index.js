@@ -42,7 +42,12 @@ Page({
     taskContent: '',
     inputToolBarShow: false,
     preSetTagList: ["旅行", "读书", "计划", "学习", "项目"],
-    tagValue: ''
+    tagValue: '',
+    todayShortcutEnable: false,
+    tmrShortcutEnable: false,
+    tagShow: false,
+    pickedDate: '',
+    pickedTime: ''
   },
   //事件处理函数
   bindViewTap: function() {
@@ -285,10 +290,12 @@ Page({
       
     })
   },
-  addTaskToPage(content, tag) {
+  addTaskToPage(content, tag, date, time) {
     var task = {
       content: content,
-      tag: tag
+      tag: tag,
+      date: date,
+      time: time
     }
     var taskList = that.data.taskList
     taskList.unshift(task)
@@ -299,7 +306,7 @@ Page({
 
   disableInput() {
     if (that.data.taskContent.trim()) {
-      that.addTaskToPage(that.data.taskContent, that.data.tagValue)
+      that.addTaskToPage(that.data.taskContent, that.data.tagValue, that.data.pickedDate, that.data.pickedTime)
     }
     this.setData({
       inputFocus: false,
@@ -307,10 +314,15 @@ Page({
       inputAreaShow:false,
       miniKeyboardHeight: -30,
       taskContent: '',
+      tagValue: '',
+      pickedDate: '',
+      pickedTime: '',
       subInfoShow: false,
       inputNotEmpty: false,
       inputToolBarShow: false,
-      tagValue:''
+      todayShortcutEnable: false,
+      tmrShortcutEnable: false,
+      tagShow: false
     })
   },
 
@@ -347,6 +359,7 @@ Page({
   showSubInfo() {
     this.setData({
       subInfoShow: true,
+      tagShow: true,
       tagInputActive: true
     })
   },
@@ -360,7 +373,8 @@ Page({
     this.setData({
       tagValue: e.currentTarget.dataset.item,
       tagInputActive: false,
-      inputFocus: true
+      inputFocus: true,
+      inputToolBarShow: true
 
     })
 
@@ -377,6 +391,24 @@ Page({
     this.setData({
       inputFocus: true,
       tagInputActive: false
+    })
+  },
+  selectToday() {
+    this.setData({
+      todayShortcutEnable: true,
+      tmrShortcutEnable: false,
+      subInfoShow: true,
+      pickedDate: '今天',
+      pickedTime: '22:00'
+    })
+  },
+  selectTmr() {
+    this.setData({
+      tmrShortcutEnable: true,
+      todayShortcutEnable: false,
+      subInfoShow: true,
+      pickedDate: '明天',
+      pickedTime: '08:00'
     })
   }
 

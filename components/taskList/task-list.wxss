@@ -13,7 +13,25 @@
   margin-right: 10px;
 }
 .task-tag {
-  position: absolute;
+  /* position: absolute; */
   color: #969696;
   font-size: 14px;
+}
+.tag-today-22 {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-right: 10px;
+  color: #969696;
+  font-size: 14px;
+}
+.tag-today-22 image {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+}
+.sub-info-wrapper {
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
