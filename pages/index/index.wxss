@@ -75,7 +75,7 @@
   width: 100%;
   height: 100%;
   background-color: #fff;
-  opacity: 0.5;
+  opacity: 0.95;
   position: absolute;
   display: none;
   z-index: 98;
@@ -279,6 +279,7 @@ input-tool-box {
 }
 .tag-today-22 text {
   line-height: 0.1;
+  white-space:nowrap;
 }
 .cancel-icon {
   width: 20px!important;
