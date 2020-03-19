@@ -186,6 +186,21 @@ input-tool-box {
   right: 20%;
   text-align: center;
 }
+.input-tool-clk{
+  background-color: #fff;
+  position: fixed;
+  bottom: -40px;
+  transition: bottom 0.5s;
+  display: none;
+  z-index: 100;
+  line-height: 2.3;
+  right: 10px;
+  text-align: center;
+}
+.input-tool-clk image {
+  width: 20px;
+  height: 21px;
+}
 
 .show-2 {
   display: block!important;

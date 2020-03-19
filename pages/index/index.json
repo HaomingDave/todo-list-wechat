@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "task-list": "/components/taskList/task-list"
+    "task-list": "/components/taskList/task-list",
+    "DateTimePicker": "/components/DateTimePicker/index"
   }
 }

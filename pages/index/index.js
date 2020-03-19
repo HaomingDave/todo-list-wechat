@@ -1,3 +1,4 @@
+const utils = require('../../utils/activity_util')
 //index.js
 //获取应用实例
 const app = getApp();
@@ -5,6 +6,20 @@ const recorder = wx.getRecorderManager();
 const player = wx.createInnerAudioContext();
 const file = wx.getFileSystemManager();
 var that;
+
+//设置时间组件的数据
+let freq = ['无循环', '每周', '每天', '每月', '每年'];
+let days = ['今天 周四', '2020/03/20', '2020/03/21', '2020/03/22', '2020/03/23'];
+let hours = [];
+let minutes = [];
+
+
+for (let i = 0; i <= 23; i++) {
+  hours.push(i + "")
+}
+for (let i = 0; i <= 59; i++) {
+  minutes.push(i + "")
+}
 
 Page({
   data: {
@@ -46,7 +61,19 @@ Page({
     tagShow: false,
     pickedDate: '',
     pickedTime: '',
-    tapRecording: false
+    tapRecording: false,
+    //时间组件数据
+    openflag: true,
+    pickDateEnable: false,
+    freq: freq,   
+    days: days,
+    hours: hours,
+    minutes: minutes,
+    presetData: [],
+    selectFreq: '',
+    day: '',
+    hour: '',
+    minute: '',
   },
   //事件处理函数
   bindViewTap: function() {
@@ -316,6 +343,7 @@ Page({
       inputToolBarShow: false,
       todayShortcutEnable: false,
       tmrShortcutEnable: false,
+      pickDateEnable: false,
       tagShow: false
     })
   },
@@ -357,7 +385,8 @@ Page({
       subInfoShow: true,
       tagShow: true,
       tagInputActive: true,
-      inputToolBarShow: true
+      inputToolBarShow: true,
+      inputFocus: false
     })
   },
   hideToolBar() {
@@ -397,6 +426,7 @@ Page({
     this.setData({
       todayShortcutEnable: true,
       tmrShortcutEnable: false,
+      pickDateEnable: false,
       subInfoShow: true,
       pickedDate: '今天',
       pickedTime: '22:00'
@@ -406,6 +436,7 @@ Page({
     this.setData({
       tmrShortcutEnable: true,
       todayShortcutEnable: false,
+      pickDateEnable: false,
       subInfoShow: true,
       pickedDate: '明天',
       pickedTime: '08:00'
@@ -451,8 +482,76 @@ Page({
     })
     this.hideToolBar()
     recorder.stop()
+  },
+  showDataPicker() {
+    this.initDataPickerData()
+    this.setData({
+      openflag: false,
+      tagInputActive: false
+    })
+    console.log(555, this.data.inputFocus)
+    this.hideToolBar()
+  },
+  initDataPickerData() {
+    let value = [0, 0, 0, 0];
+    value[0] = freq.indexOf('每天')
+    value[1] = days.indexOf('2020/03/21')
+    value[2] = hours.indexOf('8')
+    value[3] = minutes.indexOf('30')
+    this.setData({
+      presetData: value,
+      selectFreq: '每天',
+      day: '2020/03/21',
+      hour: '8',
+      minute: '30',
+      pickedDate: '2020/03/21',
+      pickedTime: '8:30'
+    })
+  },
+  canslebtn() {
+    this.setData({
+      openflag: true,
+      inputAreaShow: true,
+      inputToolBarShow: true,
+      inputFocus: true,
+      pickDateEnable: false,
+      tmrShortcutEnable: false,
+      todayShortcutEnable: false
+    })    
+  },
+  closebtn() {
+    var pickedDate = this.data.pickedDate
+    var pickedTime = this.data.pickedTime
+    this.setData({
+      openflag: true, 
+      inputAreaShow: true,
+      inputToolBarShow: true,
+      inputFocus: true,
+      pickDateEnable: true,
+      tmrShortcutEnable: false,
+      todayShortcutEnable: false,
+      subInfoShow: true,
+      pickedDate,
+      pickedTime
+    })
+  },
+  bindChange(ev) {
+    const e = ev;
+    let val = e.detail.value;
+    const selectFreq = this.data.freq[val[0]];
+    const day = this.data.days[val[1]];
+    const hour = this.data.hours[val[2]];
+    const minute = this.data.minutes[val[3]];
+    this.setData({
+      selectFreq,
+      day,
+      hour,
+      minute,
+      changefalg: true,
+      pickedDate: day,
+      pickedTime: hour + ":" + minute
+    })
   }
-
 })
 
 //对象按键值排序方法
