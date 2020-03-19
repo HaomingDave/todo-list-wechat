@@ -14,7 +14,7 @@
                adjust-position = 'true'
                value="{{taskContent}}"
                 >
-                <view class="test">
+                <view class="cover">
                   
                 </view>
           <view  class="cancel-icon" 

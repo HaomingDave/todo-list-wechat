@@ -244,8 +244,19 @@ Page({
             taskContent: e.data.Response.Result,
             inputFocus: true
           })
+          if (e.data.Response.Result.trim()) {
+            that.setData({
+              inputNotEmpty: true
+            })
+          } else {
+            that.setData({
+              inputNotEmpty: false
+            })
+          }
         } else {
-          that.addTaskToPage(e.data.Response.Result)
+          if (e.data.Response.Result.trim()) {
+            that.addTaskToPage(e.data.Response.Result)
+          }
         }
         console.log(that.data.taskList)
       },
@@ -317,7 +328,8 @@ Page({
 
   onbindfocus(e) {
     this.setData({
-      miniKeyboardHeight: e.detail.height
+      miniKeyboardHeight: e.detail.height,
+      inputToolBarShow: true,
     })
   },
   onbindinput(e) {
@@ -340,10 +352,12 @@ Page({
     })
   },
   showSubInfo() {
+    this.hideToolBar()
     this.setData({
       subInfoShow: true,
       tagShow: true,
-      tagInputActive: true
+      tagInputActive: true,
+      inputToolBarShow: true
     })
   },
   hideToolBar() {
@@ -362,9 +376,12 @@ Page({
     })
 
   },
-  onbindtaginputfocus() {
+  onbindtaginputfocus(e) {
+    console.log(2344, this.data.inputToolBarShow, this.data.miniKeyboardHeight)
     this.setData({
-      tagInputActive: true
+      miniKeyboardHeight: e.detail.height,
+      tagInputActive: true,
+      inputToolBarShow: true,
     })
   },
   onbindconfirm() {
@@ -397,7 +414,8 @@ Page({
 
   clearInput() {
     this.setData({
-      taskContent: ''
+      taskContent: '',
+      inputNotEmpty: false
     })
   },
   tapToRecord(e) {
@@ -424,8 +442,14 @@ Page({
       tapRecording: false,
       recording: false,
       audioRecording: false,
-      cancel_record: true
+      cancel_record: true,
+      inputToolBarShow: false,
+      todayShortcutEnable: false,
+      tmrShortcutEnable: false,
+      tagShow: false,
+      miniKeyboardHeight: -30,
     })
+    this.hideToolBar()
     recorder.stop()
   }
 
