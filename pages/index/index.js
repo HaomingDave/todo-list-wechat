@@ -551,6 +551,9 @@ Page({
       pickedDate: day,
       pickedTime: hour + ":" + minute
     })
+  },
+  disableScroll() {
+    
   }
 })
 

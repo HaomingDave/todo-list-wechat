@@ -58,7 +58,9 @@
             </view>
             <view class="tag-today-22" wx:if="{{pickDateEnable}}">
               <image src="../../images/clock.svg" />
+              <text>
               {{day + " " + hour + ":" + minute}}
+              </text>
             </view>
             <view class="tag-icon" wx:if="{{tagShow}}">
               #
@@ -125,7 +127,7 @@
 
 
 </view>
-<view hidden='{{openflag}}'>
+<view hidden='{{openflag}}' catchtouchmove="disableScroll">
     <DateTimePicker id="DateTimePicker" openflag="{{openflag}}" timevalue="{{presetData}}" freq="{{freq}}" days="{{days}}" hours="{{hours}}" minutes="{{minutes}}" bind:canslebtn="canslebtn" bind:closebtn="closebtn" bind:bindChangeEvent="bindChange">
     </DateTimePicker>
 </view>

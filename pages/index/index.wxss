@@ -196,6 +196,7 @@ input-tool-box {
   line-height: 2.3;
   right: 10px;
   text-align: center;
+  width: 30px;
 }
 .input-tool-clk image {
   width: 20px;
@@ -275,6 +276,9 @@ input-tool-box {
 .tag-today-22 image {
   width: 14px;
   margin-right: 5px;
+}
+.tag-today-22 text {
+  line-height: 0.1;
 }
 .cancel-icon {
   width: 20px!important;
