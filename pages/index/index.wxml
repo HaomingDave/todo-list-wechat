@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="wrapper">
-<view>
+<view style="position:relative;">
   <view class="input-area {{inputAreaShow? 'input-area-show':''}}">
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input input-wrapper col {{inputAreaShow? 'input-show':''}}">
@@ -14,6 +14,17 @@
                adjust-position = 'true'
                value="{{taskContent}}"
                 >
+                <view class="test">
+                  
+                </view>
+          <view  class="cancel-icon" 
+              bindtap="clearInput"
+              wx:if="{{taskContent}}">
+          </view>
+          <view  class="voice-icon" 
+              bindtap="tapToRecord"
+              wx:if="{{!taskContent}}">
+          </view>
           <view class="input-tool-box {{inputAreaShow? 'show-2':''}}" 
                 style="bottom:{{miniKeyboardHeight}}px">
                 
@@ -75,17 +86,7 @@
               </view>
             </view>
         </view>
-        
-        <view class="col-2 input-operate">
-            <image  class="microphone" 
-              wx:if="{{!taskContent}}"
-              bindtap=""
-              src="../../images/micophone.svg"/>
-            <image  class="microphone" 
-              wx:if="{{taskContent}}"
-              bindtap=""
-              src="../../images/cancel.svg"/>
-        </view>
+      
       </view>
 
 
@@ -110,9 +111,12 @@
           bindanimationend="end"
           src="../../images/add.svg"/>
 </view>
-<view class="wave-mask {{audioRecording? 'show':''}}"
+<view class="wave-mask {{audioRecording||tapRecording? 'show':''}} {{tapRecording? 'wave-mask-all':''}}"
       style="width:{{width}}px;height:{{height}}px">
-  <image src="../../images/animat-audio.gif" />
+    <view>
+      <image src="../../images/animat-audio.gif" /> 
+      <button type="default" class="record-btn {{tapRecording? 'show-2':''}}" bindtap="stopRecording" hover-class="defaultTap">点击完成录音</button> 
+    </view>
 </view>
 
 

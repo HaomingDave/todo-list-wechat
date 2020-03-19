@@ -45,7 +45,8 @@ Page({
     tmrShortcutEnable: false,
     tagShow: false,
     pickedDate: '',
-    pickedTime: ''
+    pickedTime: '',
+    tapRecording: false
   },
   //事件处理函数
   bindViewTap: function() {
@@ -238,7 +239,14 @@ Page({
         that.setData({
           translatedData: e.data.Response.Result
         })
-        that.addTaskToPage(e.data.Response.Result)
+        if (that.data.inputAreaShow) {
+          that.setData({
+            taskContent: e.data.Response.Result,
+            inputFocus: true
+          })
+        } else {
+          that.addTaskToPage(e.data.Response.Result)
+        }
         console.log(that.data.taskList)
       },
       complete() { wx.hideLoading(); }
@@ -385,6 +393,40 @@ Page({
       pickedDate: '明天',
       pickedTime: '08:00'
     })
+  },
+
+  clearInput() {
+    this.setData({
+      taskContent: ''
+    })
+  },
+  tapToRecord(e) {
+    // this.disableInput()
+    this.setData({
+      tapRecording: true,
+      recording: true,
+      start_y: e.touches[0].clientY,
+      cancel_record: false,
+      audioRecording: true
+    })
+    //开始录音
+    recorder.start({
+      duration: 60000,//最大时长
+      sampleRate: that.data.rate,//采样率
+      numberOfChannels: 1,//录音通道数
+      encodeBitRate: 24000,//编码码率，有效值见下表格
+      format: 'mp3',//音频格式
+      // frameSize: 2000,//指定大小 kb
+    })
+  },
+  stopRecording() {
+    this.setData({
+      tapRecording: false,
+      recording: false,
+      audioRecording: false,
+      cancel_record: true
+    })
+    recorder.stop()
   }
 
 })
