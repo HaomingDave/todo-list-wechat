@@ -50,6 +50,7 @@ Page({
     holdStartTime: '',
     taskList: [],
     audioRecording: false,
+    scrollUpStopRecording: false,
     miniKeyboardHeight: '',
     inputNotEmpty: false,
     tagInputActive: false,
@@ -152,7 +153,8 @@ Page({
           recording: true,
           start_y: e.touches[0].clientY,
           cancel_record: false,
-          audioRecording: true
+          audioRecording: true,
+          scrollUpStopRecording: false
         })
         //开始录音
         recorder.start({
@@ -472,8 +474,7 @@ Page({
       tapRecording: true,
       recording: true,
       start_y: e.touches[0].clientY,
-      cancel_record: false,
-      audioRecording: true
+      cancel_record: false
     })
     //开始录音
     recorder.start({
@@ -571,6 +572,18 @@ Page({
   },
   disableScroll() {
     
+  },
+  getTouch(e) {
+    // console.log(e)
+    if (this.data.height - e.touches[0].clientY > 130) {
+      this.setData({
+        scrollUpStopRecording: true
+      })
+    } else {
+      this.setData({
+        scrollUpStopRecording: false
+      })
+    }
   }
 })
 

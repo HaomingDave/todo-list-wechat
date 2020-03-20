@@ -1,102 +1,102 @@
 <!--index.wxml-->
 <view class="wrapper">
-<view style="position:relative;">
-  <view class="input-area {{inputAreaShow? 'input-area-show':''}}">
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell weui-cell_input input-wrapper col {{inputAreaShow? 'input-show':''}}">
-        <input class="weui-input col-9 main-input" 
-               placeholder="请添加事项..." 
-               confirm-hold="true" fixed="true"
-               focus="{{inputFocus}}"
-               bindfocus="onbindfocus"
-               bindinput="onbindinput"
-               bindconfirm="onbindconfirm"
-               adjust-position = 'true'
-               value="{{taskContent}}"
-                >
-                <view class="cover">
+  <view style="position:relative;">
+    <view class="input-area {{inputAreaShow? 'input-area-show':''}}">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input input-wrapper col {{inputAreaShow? 'input-show':''}}">
+          <input class="weui-input col-9 main-input" 
+                placeholder="请添加事项..." 
+                confirm-hold="true" fixed="true"
+                focus="{{inputFocus}}"
+                bindfocus="onbindfocus"
+                bindinput="onbindinput"
+                bindconfirm="onbindconfirm"
+                adjust-position = 'true'
+                value="{{taskContent}}"
+                  >
+                  <view class="cover">
+                    
+                  </view>
+            <view  class="cancel-icon" 
+                bindtap="clearInput"
+                wx:if="{{taskContent}}">
+            </view>
+            <view  class="voice-icon" 
+                bindtap="tapToRecord"
+                wx:if="{{!taskContent}}">
+            </view>
+            <view class="input-tool-box {{inputAreaShow? 'show-2':''}}" 
+                  style="bottom:{{miniKeyboardHeight}}px">
                   
-                </view>
-          <view  class="cancel-icon" 
-              bindtap="clearInput"
-              wx:if="{{taskContent}}">
-          </view>
-          <view  class="voice-icon" 
-              bindtap="tapToRecord"
-              wx:if="{{!taskContent}}">
-          </view>
-          <view class="input-tool-box {{inputAreaShow? 'show-2':''}}" 
-                style="bottom:{{miniKeyboardHeight}}px">
-                
-          </view>
-          <view class="input-tool-tag {{inputToolBarShow? 'show-2':''}}" 
-                style="bottom:{{miniKeyboardHeight}}px"
-                bindtap="showSubInfo">
+            </view>
+            <view class="input-tool-tag {{inputToolBarShow? 'show-2':''}}" 
+                  style="bottom:{{miniKeyboardHeight}}px"
+                  bindtap="showSubInfo">
+                  #
+            </view>
+            <view class="input-tool-today {{inputToolBarShow? 'show-2':''}}" 
+                  style="bottom:{{miniKeyboardHeight}}px"
+                  bindtap="selectToday">
+                  today
+            </view>
+            <view class="input-tool-tmr {{inputToolBarShow? 'show-2':''}}" 
+                  style="bottom:{{miniKeyboardHeight}}px"
+                  bindtap="selectTmr">
+                  tmr
+            </view>
+            <view class="tool-mask {{inputAreaShow? 'show-2':''}} {{inputNotEmpty? 'disappear':''}}"
+                  style="bottom:{{miniKeyboardHeight}}px"></view>
+          </input>
+          <view class="sub-info col {{subInfoShow? 'sub-info-show':''}}">
+              <view class="tag-today-22" wx:if="{{todayShortcutEnable}}">
+                <image src="../../images/clock.svg" />
+                今天 22:00
+              </view>
+              <view class="tag-today-22" wx:if="{{tmrShortcutEnable}}">
+                <image src="../../images/clock.svg" />
+                明天 08:00
+              </view>
+              <view class="tag-today-22" wx:if="{{pickDateEnable}}">
+                <image src="../../images/clock.svg" />
+                <text>
+                {{day + " " + hour + ":" + minute}}
+                </text>
+              </view>
+              <view class="tag-icon" wx:if="{{tagShow}}">
                 #
-          </view>
-          <view class="input-tool-today {{inputToolBarShow? 'show-2':''}}" 
-                style="bottom:{{miniKeyboardHeight}}px"
-                bindtap="selectToday">
-                today
-          </view>
-          <view class="input-tool-tmr {{inputToolBarShow? 'show-2':''}}" 
-                style="bottom:{{miniKeyboardHeight}}px"
-                bindtap="selectTmr">
-                tmr
-          </view>
-          <view class="tool-mask {{inputAreaShow? 'show-2':''}} {{inputNotEmpty? 'disappear':''}}"
-                style="bottom:{{miniKeyboardHeight}}px"></view>
-        </input>
-        <view class="sub-info col {{subInfoShow? 'sub-info-show':''}}">
-            <view class="tag-today-22" wx:if="{{todayShortcutEnable}}">
-              <image src="../../images/clock.svg" />
-              今天 22:00
-            </view>
-            <view class="tag-today-22" wx:if="{{tmrShortcutEnable}}">
-              <image src="../../images/clock.svg" />
-              明天 08:00
-            </view>
-            <view class="tag-today-22" wx:if="{{pickDateEnable}}">
-              <image src="../../images/clock.svg" />
-              <text>
-              {{day + " " + hour + ":" + minute}}
-              </text>
-            </view>
-            <view class="tag-icon" wx:if="{{tagShow}}">
-              #
-            </view>
-            <view wx:if="{{tagShow}}">
-              <input type="" placeholder="" 
-                  class="input-tag"
-                  focus="{{tagInputActive}}"
-                  value="{{tagValue}}"
-                  confirm-hold
-                  maxlength = "20"
-                  bindinput="onbindtaginput"
-                  bindfocus="onbindtaginputfocus"
-                  bindconfirm="onbindtaginputconfirm"
-                  />
-              <view class="tag-select-modal {{tagInputActive? 'show-2':''}}"
-                    bindtouchstart="hideToolBar">
-                <view class="modal-content">
-                  <view class="modal-title">
-                    输入新标签，或选择下列分类标签
-                  </view>
-                  <view class="modal-list">
-                    <view wx:for="{{preSetTagList}}" data-item="{{item}}" class="preset-tag" bindtap="selectTag">
-                      # {{item}}
+              </view>
+              <view wx:if="{{tagShow}}">
+                <input type="" placeholder="" 
+                    class="input-tag"
+                    focus="{{tagInputActive}}"
+                    value="{{tagValue}}"
+                    confirm-hold
+                    maxlength = "20"
+                    bindinput="onbindtaginput"
+                    bindfocus="onbindtaginputfocus"
+                    bindconfirm="onbindtaginputconfirm"
+                    />
+                <view class="tag-select-modal {{tagInputActive? 'show-2':''}}"
+                      bindtouchstart="hideToolBar">
+                  <view class="modal-content">
+                    <view class="modal-title">
+                      输入新标签，或选择下列分类标签
                     </view>
+                    <view class="modal-list">
+                      <view wx:for="{{preSetTagList}}" data-item="{{item}}" class="preset-tag" bindtap="selectTag">
+                        # {{item}}
+                      </view>
+                    </view>
+                    
                   </view>
-                  
                 </view>
               </view>
-            </view>
+          </view>
+        
         </view>
-      
+
+
       </view>
-
-
-    </view>
 
 
   </view>
@@ -108,13 +108,12 @@
 
   </view>
 </view>
-<view class="add">
+<view class="add" catchtouchmove="getTouch">
   <view class="add-button-wrapper">
     <image  class="{{addButtonAnimation? 'add-animation':''}}{{hold? 'enlarge':''}}" 
             bindtouchstart="clickDown1" 
             bind:touchend="clickUp1"  
-            touchcancel="clickUp1" 
-            bindtouchmove="clickMove1"
+            bindtouchcancel="clickUp1" 
             bindanimationend="end"
             src="../../images/add.png"/>
     <view class="back-circle-one {{buttonBackOneAnimation&&hold? 'add-backone-animation':''}} {{buttonBackOneKeepLarge? 'largerAt15':''}}"
@@ -124,9 +123,24 @@
 </view>
 <view class="wave-mask {{audioRecording||tapRecording? 'show':''}} {{tapRecording? 'wave-mask-all':''}}"
       style="width:{{width}}px;height:{{height}}px">
-    <view>
+    <view class="display-none {{!scrollUpStopRecording?'show-2':''}}">
       <image src="../../images/animat-audio.gif" /> 
       <button type="default" class="record-btn {{tapRecording? 'show-2':''}}" bindtap="stopRecording" hover-class="defaultTap">点击完成录音</button> 
+      <view class="txt-center example {{audioRecording?'show-2':''}}">
+        例如：下午三点我要开会
+      </view>
+      <view class="txt-center voice-note {{audioRecording?'show-2':''}}">
+        保持长按，开始说话...
+      </view>
+      <view class="txt-center voice-note {{audioRecording?'show-2':''}}">
+        上划取消
+      </view>
+    </view>
+    <view class="display-none {{scrollUpStopRecording?'show-2':''}}">
+      <image src="../../images/upArrow.png" />
+      <view class="txt-center voice-note show-2">
+        松开手指，取消录音...
+      </view>
     </view>
 </view>
 
