@@ -398,6 +398,9 @@ Page({
       inputToolBarShow: true,
     })
   },
+  onbindblur(e) {
+    this.hideToolBar()
+  },
   onbindinput(e) {
     this.setData({
       taskContent: e.detail.value
