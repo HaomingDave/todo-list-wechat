@@ -155,6 +155,14 @@ Page({
 
     setTimeout(() => {
       if (this.data.hold) {
+        wx.vibrateShort({
+          success: (result) => {
+            console.log('success')
+          },
+          fail: () => { console.log('fail') },
+          complete: () => { console.log('com') }
+        });
+
         that.setData({
           recording: true,
           start_y: e.touches[0].clientY,
