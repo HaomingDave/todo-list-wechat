@@ -115,6 +115,9 @@ Page({
       })
     })
   },
+  onHide() {
+    this.hideToolBar()
+  },
 
   //手指按下
   clickDown(e) {
