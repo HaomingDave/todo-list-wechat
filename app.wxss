@@ -7,3 +7,29 @@
   justify-content: space-between;
   box-sizing: border-box;
 } 
+
+checkbox .wx-checkbox-input{
+   border: 1.5px solid black;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+   /* border: 1px solid black; */
+   background: black;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+   border-radius: 50%;/* 圆角 */
+   width: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+   height: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+   line-height: 40rpx;
+   text-align: center;
+   font-size:30rpx; /* 对勾大小 30rpx */
+   color:#fff; /* 对勾颜色 白色 */
+   background: transparent;
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
+}
+
+button {
+  color: black;
+}

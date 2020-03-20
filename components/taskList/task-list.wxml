@@ -1,7 +1,7 @@
 <!-- 组件模板 -->
 <view>
   <view class="task-list">
-    <view wx:for="{{taskList}}" class="task">
+    <view wx:for="{{taskList}}" wx:key="content" class="task">
       <label class="checkbox task-label">
         <checkbox value="{{item}}" class="task-checkbox"/>
         <view>

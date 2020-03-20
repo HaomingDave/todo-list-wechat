@@ -317,4 +317,6 @@ input-tool-box {
 }
 .record-btn {
   display: none;
+  color: black!important;
+  border: 1px solid black;
 }
