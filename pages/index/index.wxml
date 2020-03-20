@@ -109,13 +109,18 @@
   </view>
 </view>
 <view class="add">
-  <image  class="{{addButtonAnimation? 'add-animation':''}}{{hold? 'enlarge':''}}" 
-          bindtouchstart="clickDown1" 
-          bind:touchend="clickUp1"  
-          touchcancel="clickUp1" 
-          bindtouchmove="clickMove1"
-          bindanimationend="end"
-          src="../../images/add.svg"/>
+  <view class="add-button-wrapper">
+    <image  class="{{addButtonAnimation? 'add-animation':''}}{{hold? 'enlarge':''}}" 
+            bindtouchstart="clickDown1" 
+            bind:touchend="clickUp1"  
+            touchcancel="clickUp1" 
+            bindtouchmove="clickMove1"
+            bindanimationend="end"
+            src="../../images/add.png"/>
+    <view class="back-circle-one {{buttonBackOneAnimation&&hold? 'add-backone-animation':''}} {{buttonBackOneKeepLarge? 'largerAt15':''}}"
+          bindanimationend="backOneAnimationEnd">
+    </view>   
+  </view>
 </view>
 <view class="wave-mask {{audioRecording||tapRecording? 'show':''}} {{tapRecording? 'wave-mask-all':''}}"
       style="width:{{width}}px;height:{{height}}px">

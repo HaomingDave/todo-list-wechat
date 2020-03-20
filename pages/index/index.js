@@ -40,7 +40,9 @@ Page({
     filePath: '',//录音文件
     fileLen: 0,//录音长度
     translatedData: '',
-    addButtonAnimation: '',
+    addButtonAnimation: false,
+    buttonBackOneAnimation: false,
+    buttonBackOneKeepLarge: false,
     inputFocus: false,
     enableSpeak: false,
     inputAreaShow: false,
@@ -169,6 +171,8 @@ Page({
   clickUp1(e) {
     this.setData({
       hold: false,
+      buttonBackOneKeepLarge: false,
+      buttonBackOneAnimation: false,
       audioRecording: false
     })
     if (e.timeStamp - this.data.holdStartTime < 350) {
@@ -310,8 +314,18 @@ Page({
 
   end() {
     this.setData({
-      addButtonAnimation: false,
-      
+      addButtonAnimation: false
+    })
+    if (this.data.hold) {
+      this.setData({
+        buttonBackOneAnimation: true
+      })
+    }
+  },
+  backOneAnimationEnd() {
+    this.setData({
+      buttonBackOneAnimation: false,
+      buttonBackOneKeepLarge: true
     })
   },
   addTaskToPage(content, tag, date, time) {
