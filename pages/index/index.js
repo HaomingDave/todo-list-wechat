@@ -25,6 +25,7 @@ Page({
   data: {
     height: '',
     width: '',
+    showYellowCircle: false,
     /**
      * 页面的初始数据
      */
@@ -142,6 +143,11 @@ Page({
     })
   },
   clickDown1(e) {
+    if (!this.data.showYellowCircle) {
+      this.setData({
+        showYellowCircle: true
+      })
+    }
     this.setData({
       hold: true,
       holdStartTime: e.timeStamp,
