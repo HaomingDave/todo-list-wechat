@@ -263,40 +263,45 @@ Page({
       title: '发送中...',
     })
     console.log(data, 'this is data')
-    wx.request({
-      url: 'https://asr.tencentcloudapi.com/',
-      data: data,
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      method: 'post',
-      success: function (e) { 
-        console.log(e.data.Response) 
-        that.setData({
-          translatedData: e.data.Response.Result
-        })
-        if (that.data.inputAreaShow) {
+    if (!that.data.scrollUpStopRecording) {
+      wx.request({
+        url: 'https://asr.tencentcloudapi.com/',
+        data: data,
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        method: 'post',
+        success: function (e) {
+          console.log(e.data.Response)
           that.setData({
-            taskContent: e.data.Response.Result,
-            inputFocus: true
+            translatedData: e.data.Response.Result
           })
-          if (e.data.Response.Result.trim()) {
+          if (that.data.inputAreaShow) {
             that.setData({
-              inputNotEmpty: true
+              taskContent: e.data.Response.Result,
+              inputFocus: true
             })
+            if (e.data.Response.Result.trim()) {
+              that.setData({
+                inputNotEmpty: true
+              })
+            } else {
+              that.setData({
+                inputNotEmpty: false
+              })
+            }
           } else {
-            that.setData({
-              inputNotEmpty: false
-            })
+            if (e.data.Response.Result.trim()) {
+              that.addTaskToPage(e.data.Response.Result)
+            }
           }
-        } else {
-          if (e.data.Response.Result.trim()) {
-            that.addTaskToPage(e.data.Response.Result)
-          }
-        }
-        console.log(that.data.taskList)
-      },
-      complete() { wx.hideLoading(); }
+          console.log(that.data.taskList)
+        },
+        complete() { wx.hideLoading(); }
+      })
+    }
+    that.setData({
+      scrollUpStopRecording: false
     })
   },
 
