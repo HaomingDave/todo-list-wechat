@@ -154,7 +154,7 @@ Page({
     })
 
     setTimeout(() => {
-      if (this.data.hold) {
+      if (this.data.hold && !this.data.inputAreaShow) {
         wx.vibrateShort({
           success: (result) => {
             console.log('success')
@@ -337,7 +337,7 @@ Page({
     this.setData({
       addButtonAnimation: false
     })
-    if (this.data.hold) {
+    if (this.data.hold && !this.data.inputAreaShow) {
       this.setData({
         buttonBackOneAnimation: true
       })
