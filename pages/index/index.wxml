@@ -120,6 +120,9 @@
     <view class="back-circle-one {{buttonBackOneAnimation&&hold? 'add-backone-animation':''}} {{buttonBackOneKeepLarge? 'largerAt15':''}}"
           hidden="{{!showYellowCircle}}"
           bindanimationend="backOneAnimationEnd">
+      <view class="back-circle-two {{buttonBackOneKeepLarge? 'circle-two-animation':''}}"
+            hidden="{{!showYellowCircle}}">  
+      </view> 
     </view>   
   </view>
 </view>

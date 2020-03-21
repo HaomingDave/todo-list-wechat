@@ -51,6 +51,20 @@
   left: 50%;
   margin-left: -29px;
 }
+.back-circle-two {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #F8E643;
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -29px;
+}
+.circle-two-animation {
+  animation: back-two-animation 1s infinite;
+}
 
 @keyframes larger{
   0%{
@@ -72,6 +86,17 @@
   }
   100%{
     transform: scale(1.8);
+  } 
+}
+@keyframes back-two-animation{
+  0%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1.5);
+  }
+  100%{
+    transform: scale(1);
   } 
 }
 .largerAt15 {
